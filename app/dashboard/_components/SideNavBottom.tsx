@@ -1,7 +1,7 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { Archive, Flag, Github } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Dialog,
     DialogClose,
@@ -15,7 +15,10 @@ import {
 import { Input } from '@/components/ui/input'
   
 
-const SideNavBottom = ({onFileCreate}:any) => {
+const SideNavBottom = ({onFileCreate,Files}:any) => {
+  // useEffect(()=>{
+
+  // },[Files])
     const [FileName,setFileName]=useState('');
     const menuList=[{
         id:1,
@@ -79,9 +82,10 @@ const SideNavBottom = ({onFileCreate}:any) => {
 
           {/* progressbar */}
           <div className='mt-5 h-4 w-full bg-gray-200 rounded-full'>
-            <div className='bg-blue-600 rounded-full w-[40%] h-4'></div>
+            <div style={{width:`${(Files/5)*100}%`}} className={` bg-blue-600 rounded-full h-4`
+          }></div>
           </div>
-          <h2 className='text-[12px] mt-3'><strong>1</strong> out of <strong>5</strong> files used</h2>
+          <h2 className='text-[12px] mt-3'><strong>{Files}</strong> out of <strong>5</strong> files used</h2>
           <h2 className='text-[12px] mt-1'>Upgrade your plan for unlimited access.</h2>
     </div>
   )
