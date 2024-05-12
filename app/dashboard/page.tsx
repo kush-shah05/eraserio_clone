@@ -4,6 +4,8 @@ import { api } from "@/convex/_generated/api"
 import { LogoutLink, useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import { useConvex, useMutation } from "convex/react"
 import { useEffect } from "react"
+import Header from "./_components/Header"
+import FileList from "./_components/FileList"
 
 const page = () => {
     const {user}:any=useKindeBrowserClient()
@@ -27,9 +29,10 @@ const checkUser=async()=>{
   }
 }
   return (
-    <div>dashboard
-        <Button>
-           <LogoutLink>Logout</LogoutLink> </Button>
+    <div className="p-8">
+      <Header/>
+
+      <FileList/>
     </div>
   )
 }

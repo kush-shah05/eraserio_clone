@@ -3,8 +3,9 @@ import { api } from "@/convex/_generated/api";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useConvex } from "convex/react";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SideNav from "./_components/SideNav";
+import { FileListContext } from "../_context/FileListContext";
 
 const DashboardLayout = ({
   children,
@@ -12,6 +13,7 @@ const DashboardLayout = ({
   const { user }: any = useKindeBrowserClient();
   const convex = useConvex();
   const router = useRouter();
+  const [FileList_,setFileList_]=useState();
   useEffect(() => {
     user && checkTeam();
   }, [user]);
@@ -25,14 +27,16 @@ const DashboardLayout = ({
   };
   return (
     <div>
+      <FileListContext.Provider value={{FileList_,setFileList_}}>
       <div className="grid grid-cols-4">
-        <div>
+        <div className='h-screen w-72 fixed'>
           <SideNav />
         </div>
-        <div className="grid-cols-3">
+        <div className="col-span-4 ml-72">
             {children}
         </div>
       </div>
+      </FileListContext.Provider>
     </div>
   );
 };

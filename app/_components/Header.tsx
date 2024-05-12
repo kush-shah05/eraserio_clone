@@ -1,8 +1,16 @@
 'use client'
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs"
+import { LoginLink, RegisterLink, useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 const Header = () => {
+  const user=useKindeBrowserClient()
+  
+  const router=useRouter();
+  useEffect(()=>{
+user.isAuthenticated&&router.push('/dashboard')
+  },[user])
   return (
     <header className="bg-black">
   <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
