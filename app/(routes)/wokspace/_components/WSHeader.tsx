@@ -1,13 +1,15 @@
 import { Button } from '@/components/ui/button'
 import { Link, SaveIcon } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const WSHeader = ({onSave}:any) => {
+  const router=useRouter();
   return (
     <div className='p-3 border-b flex justify-between items-center'>
         <div className='flex gap-2 items-center'>
-        <Image src='/logo-1.svg' alt='logo' height={40} width={40} />
+        <Image className='cursor-pointer' src='/logo-1.svg' alt='logo' height={40} width={40} onClick={()=>router.push('/dashboard')}/>
         <h2>File Name</h2>
         </div>
         <div className='flex gap-4 items-center'>

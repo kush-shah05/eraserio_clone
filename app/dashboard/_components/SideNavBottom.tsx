@@ -13,6 +13,8 @@ import {
     DialogTrigger,
   } from "@/components/ui/dialog"
 import { Input } from '@/components/ui/input'
+import Constant from '@/app/_constant/Constant'
+import PricingSection from './PricingSection'
   
 
 const SideNavBottom = ({onFileCreate,Files}:any) => {
@@ -56,7 +58,7 @@ const SideNavBottom = ({onFileCreate,Files}:any) => {
   <Button className='mt-3 w-full bg-blue-600 justify-start hover:bg-blue-700'>Add New File</Button>
 
   </DialogTrigger>
-  <DialogContent>
+  {Files< Constant.MAX_FREE_FILES? <DialogContent>
     <DialogHeader>
       <DialogTitle>Create New File</DialogTitle>
       <DialogDescription>
@@ -76,7 +78,7 @@ const SideNavBottom = ({onFileCreate,Files}:any) => {
             </Button>
           </DialogClose>
         </DialogFooter>
-  </DialogContent>
+  </DialogContent>:<PricingSection/>}
 </Dialog>
 
 
@@ -85,7 +87,7 @@ const SideNavBottom = ({onFileCreate,Files}:any) => {
             <div style={{width:`${(Files/5)*100}%`}} className={` bg-blue-600 rounded-full h-4`
           }></div>
           </div>
-          <h2 className='text-[12px] mt-3'><strong>{Files}</strong> out of <strong>5</strong> files used</h2>
+          <h2 className='text-[12px] mt-3'><strong>{Files}</strong> out of <strong>{Constant.MAX_FREE_FILES}</strong> files used</h2>
           <h2 className='text-[12px] mt-1'>Upgrade your plan for unlimited access.</h2>
     </div>
   )
