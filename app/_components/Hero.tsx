@@ -1,6 +1,7 @@
 
 const Hero = () => {
   return (
+    <div>
     <section className="bg-black">
         <div className="flex items-baseline justify-center pt-20">
         <h2 className='text-white border border-white text-center px-3 p-2 rounded-full'>
@@ -32,6 +33,7 @@ const Hero = () => {
     </div>
   </div>
 </section>
+</div>
   )
 }
 

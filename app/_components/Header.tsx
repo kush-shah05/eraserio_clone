@@ -12,7 +12,7 @@ const Header = () => {
 // user.isAuthenticated&&router.push('/dashboard')
 //   },[user])
   return (
-    <header className="bg-black">
+    <div>   <header className="bg-black">
   <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
     <Image src='/logo-1.svg' width={100} height={100} alt="logo"/>
 
@@ -80,6 +80,8 @@ const Header = () => {
     </div>
   </div>
 </header>
+</div>
+ 
   )
 }
 
